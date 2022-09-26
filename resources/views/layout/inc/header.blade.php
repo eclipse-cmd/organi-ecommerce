@@ -27,8 +27,24 @@
                                 <li><a href="#">English</a></li>
                             </ul>
                         </div>
-                        <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+
+                        <div style="display: inline-block">
+                            <div class="header__top__right__auth">
+                                @auth
+                                    <a href=""><i class="fa fa-user"></i>{{ auth()->user()->username }}</a>
+                                    <span><a href="{{ route('change-password') }}">Change your password</a></span>
+
+                                    <form action="{{ route('logout') }}" method="post">
+                                        @csrf
+                                        <button type="submit"><i class="fa fa-user"></i>Logout</button>
+                                    </form>
+                                @endauth
+
+                                @guest
+                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i>Login</a>
+                                    <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a>
+                                @endguest
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,8 +61,8 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./shop-grid.html">Shop</a></li>
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
