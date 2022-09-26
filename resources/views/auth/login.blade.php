@@ -119,7 +119,7 @@
                     <input type="checkbox" name="remember" style="width: 13px; height: 13px">
                     <label for="remember">Remember me</label>
 
-                    <span style=" float: right;" class="forgot-password"><a href="{{ route('password.request') }}">Forgot Password?</a></span>
+                    <span style=" float: right;" class="forgot-password"><a class="btn btn-outline-info" href="{{ route('password.request') }}">Forgot Password?</a></span>
                 </div>
 
 
