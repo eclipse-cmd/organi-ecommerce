@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("/")->group(function () {
-    Route::get("", [HomeController::class, "index"]);
+    Route::get("/", [HomeController::class, "index"])->name('index');
     Route::get('shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('pages', [HomeController::class, 'pages'])->name('pages');
     Route::get('blog', [HomeController::class, 'blog'])->name('blog');
@@ -20,6 +20,7 @@ Route::middleware("auth")->group(function () {
     Route::get('change-password', [UserController::class, 'changePassword'])->name('change-password');
     Route::post('change-password', [UserController::class, 'updatePassword'])->name('update-password');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
 });
 
 Route::middleware("guest")->group(function () {
@@ -36,8 +37,7 @@ Route::middleware("guest")->group(function () {
     Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->name('forgot-password.request');
 
     Route::get('reset-password/{token}', function (Request $request) {
-//        return view('auth.reset-password', ['token' => $token]);
-        dd($request->token);
+        return view('auth.reset-password', ['token' => $token]);
     })->name('password.reset');
 
     Route::post('reset-password', function (Request $request) {
@@ -66,12 +66,12 @@ Route::middleware("guest")->group(function () {
     })->name('password.update');
 });
 
-Route::get('mail', function() {
-    return view("mail.forgot-password")->with([
-        'data' => [
-            'firstname' => 'emma',
-            'lastname' => 'toba',
-            'link' => config('app.url') . '/reset-password/' . 'ororororoasodjnfpisldkjnfolsdf'
-        ]
-    ]);
-});
+//Route::get('mail', function() {
+//    return view("mail.forgot-password")->with([
+//        'data' => [
+//            'firstname' => 'emma',
+//            'lastname' => 'toba',
+//            'link' => config('app.url') . '/reset-password/' . 'ororororoasodjnfpisldkjnfolsdf'
+//        ]
+//    ]);
+//});

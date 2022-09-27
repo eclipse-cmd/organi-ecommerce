@@ -2,6 +2,7 @@
 
 @section('content')
     <form action="{{ route('forgot-password.request') }}" method="post">
+        @csrf
         @if ($errors->any())
             <div class="container">
                 <div class="row">
@@ -15,7 +16,6 @@
                 </div>
             </div>
         @endif
-        @csrf
         <div class="w-50 mx-auto pb-xl-3">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" id="email" name="email"

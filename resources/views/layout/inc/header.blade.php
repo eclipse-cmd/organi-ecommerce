@@ -31,7 +31,7 @@
                         <div style="display: inline-block">
                             <div class="header__top__right__auth">
                                 @auth
-                                    <a href=""><i class="fa fa-user"></i>{{ auth()->user()->username }}</a>
+                                    <a href={{ route('index') }}><i class="fa fa-user"></i>{{ auth()->user()->username }}</a>
                                     <span><a href="{{ route('change-password') }}">Change your password</a></span>
 
                                     <form action="{{ route('logout') }}" method="post">

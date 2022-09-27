@@ -32,4 +32,8 @@ class UserController extends Controller
 
         return back()->with("status", "Password changed successfully!");
     }
+
+
+
+
 }

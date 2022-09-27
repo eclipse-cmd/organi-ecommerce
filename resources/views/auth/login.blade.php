@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-50 mx-auto ">
+            <div class="w-50 mx-auto" >
                 @if(session('status'))
                     <div style="background-color: #DD4B2B; height: 40px; color: white; padding-top: 5px " class="text-center">
                         {{ (session('status')) }}
@@ -119,7 +119,7 @@
                     <input type="checkbox" name="remember" style="width: 13px; height: 13px">
                     <label for="remember">Remember me</label>
 
-                    <span style=" float: right;" class="forgot-password"><a class="btn btn-outline-info" href="{{ route('password.request') }}">Forgot Password?</a></span>
+                    <span style=" float: right;" class="forgot-password"><a class="btn btn-outline-info" href="{{ route('forgot-password') }}">Forgot Password?</a></span>
                 </div>
 
 
