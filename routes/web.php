@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix("/")->group(function () {
     require __DIR__.'/admin.php';
 
-    Route::get("/", [HomeController::class, "index"])->name('index');
+    Route::get("", [HomeController::class, "index"])->name('index');
     Route::get('shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('pages', [HomeController::class, 'pages'])->name('pages');
     Route::get('blog', [HomeController::class, 'blog'])->name('blog');
@@ -22,7 +22,6 @@ Route::middleware("auth")->group(function () {
     Route::get('change-password', [UserController::class, 'changePassword'])->name('change-password');
     Route::post('change-password', [UserController::class, 'updatePassword'])->name('update-password');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
 });
 
 Route::middleware("guest")->group(function () {
@@ -41,29 +40,6 @@ Route::middleware("guest")->group(function () {
     Route::get('reset-password/{token}', function (Request $request) {
         return view('auth.reset-password', ['token' => $request->token]);
     })->name('password.reset');
-
-    // Route::post('reset-password', function (Request $request) {
-    //     $request->validate([
-    //         'token' => 'required',
-    //         'email' => 'required|email',
-    //         'password' => 'required|min:8|confirmed',
-    //     ]);
-
-    //     $status = Password::reset(
-    //         $request->only('email', 'password', 'password_confirmation', 'token'),
-    //         function ($user, $password) {
-    //             $user->forceFill([
-    //                 'password' => Hash::make($password)
-    //             ])->setRememberToken(Str::random(60));
-
-    //             $user->save();
-
-    //             event(new PasswordReset($user));
-    //         }
-    //     );
-
-    //     return $status === Password::PASSWORD_RESET
-    //         ? redirect()->route('login')->with('status', __($status))
-    //         : back()->withErrors(['email' => [__($status)]]);
-    // })->name('password.update');
 });
+
+
