@@ -9,10 +9,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(5);
-
-        return view('admin.products.index',compact('products'));
-//            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.products.index', [
+            'products' => Product::latest()->paginate(5)
+        ]);
     }
 
     public function create()
@@ -37,8 +36,9 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('admin.products.show',compact('product'));
+        return view('admin.products.show',[
+            'product' => Product::findorfail($id)
+        ]);
     }
 
 
