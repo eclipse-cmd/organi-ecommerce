@@ -226,7 +226,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="product-title">Product Title</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="product-title">
+                                                <input type="text" name="product-title" class="form-control" id="product-title">
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +234,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="regular-price">Regular Price</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="regular-price">
+                                                <input type="text" name="regular-price" class="form-control" id="regular-price">
                                             </div>
                                         </div>
                                     </div>
@@ -242,7 +242,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="sale-price">Sale Price</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="sale-price">
+                                                <input type="text" name="sale-price" class="form-control" id="sale-price">
                                             </div>
                                         </div>
                                     </div>
@@ -250,7 +250,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="stock">Stock</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="stock">
+                                                <input type="text" name="stock" class="form-control" id="stock">
                                             </div>
                                         </div>
                                     </div>
@@ -258,7 +258,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="SKU">SKU</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="SKU">
+                                                <input type="text" name="sku" class="form-control" id="SKU">
                                             </div>
                                         </div>
                                     </div>
@@ -266,7 +266,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="category">Category</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="category">
+                                                <input type="text" name="category" class="form-control" id="category">
                                             </div>
                                         </div>
                                     </div>
@@ -274,7 +274,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="tags">Tags</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="tags">
+                                                <input type="text" name="tags" class="form-control" id="tags">
                                             </div>
                                         </div>
                                     </div>
