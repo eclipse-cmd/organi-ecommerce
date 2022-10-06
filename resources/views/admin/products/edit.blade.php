@@ -6,7 +6,7 @@
             <div class="pull-left">
                 <h2>Edit Product</h2>
             </div>
-            <div class="pull-right">
+            <div class="float-right">
                 <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
             </div>
         </div>

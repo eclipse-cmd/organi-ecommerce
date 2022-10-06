@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthController;
 use Illuminate\Support\Facades\Route;
 

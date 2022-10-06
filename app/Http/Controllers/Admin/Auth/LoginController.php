@@ -27,7 +27,7 @@ class LoginController extends Controller
             return back()->with("error", "Access Denied");
         }
 
-        return view('admin.products.index');
+        return redirect()->intended('admin.index');
     }
 
     public function logout(Request $request)
