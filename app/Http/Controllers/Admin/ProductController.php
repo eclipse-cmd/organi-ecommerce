@@ -22,33 +22,34 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        dd($request)->all();
-        $request->validate([
-            'title' => 'required',
+        $validatedData =  $request->validate([
+            'name' => 'required',
+            'stock' => 'required',
+            'sku' => 'required',
+            // 'category' => 'required',
             'description' => 'required',
-            'price' => 'required'
+            'sales_price' => 'required',
+            'regular_price' => 'required',
+            'description' => 'required',
         ]);
 
-        Product::create($request->all());
+        Product::create($validatedData);
 
-        return redirect()->back()->with('success','Product created successfully.');
+        return redirect()->back()->with('success', 'Product created successfully.');
     }
-
 
     public function show($id)
     {
-        return view('admin.products.show',[
+        return view('admin.products.show', [
             'product' => Product::findorfail($id)
         ]);
     }
 
-
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('admin.products.edit',compact('product'));
+        return view('admin.products.edit', compact('product'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -62,9 +63,8 @@ class ProductController extends Controller
         $product->update($request->all());
 
         return redirect()->route('admin.products.index')
-            ->with('success','Product updated successfully');
+            ->with('success', 'Product updated successfully');
     }
-
 
     public function destroy($id)
     {
@@ -72,6 +72,6 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')
-            ->with('success','Product deleted successfully');
+            ->with('success', 'Product deleted successfully');
     }
 }

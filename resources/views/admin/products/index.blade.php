@@ -57,16 +57,12 @@
 
 @section('content')
     <div class="nk-content ">
+        @include('layout.error-flash')
         <div class="container-fluid">
             <div class="nk-content-inner">
                 <div class="nk-content-body">
                     <div class="nk-block-head nk-block-head-sm">
                         <div class="nk-block-between">
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div>
-                            @endif
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Products</h3>
                             </div><!-- .nk-block-head-content -->
@@ -105,58 +101,76 @@
                                                 <span class="float-right">Actions</span>
                                             </div>
                                         </div><!-- .nk-tb-item -->
-                                        <div class="nk-tb-item">
-                                            <div class="nk-tb-col tb-col-sm">
-                                                <span class="tb-product">
-                                                    <img src="/assets/admin/images/product/a.png" alt=""
-                                                        class="thumb">
-                                                    <span class="title">Pink Fitness Tracker</span>
-                                                </span>
-                                            </div>
-                                            <div class="nk-tb-col">
-                                                <span class="tb-sub">UY3749</span>
-                                            </div>
-                                            <div class="nk-tb-col">
-                                                <span class="tb-lead">$ 99.49</span>
-                                            </div>
-                                            <div class="nk-tb-col">
-                                                <span class="tb-sub">49</span>
-                                            </div>
-                                            <div class="nk-tb-col tb-col-md">
-                                                <span class="tb-sub">Fitbit, Tracker</span>
-                                            </div>
-                                            <div class="nk-tb-col nk-tb-col-tools">
-                                                <ul class="nk-tb-actions gx-1 my-n1">
-                                                    <li class="mr-n1">
-                                                        <div class="dropdown">
-                                                            <a href="#"
-                                                                class="dropdown-toggle btn btn-icon btn-trigger"
-                                                                data-toggle="dropdown"><em
-                                                                    class="icon ni ni-more-h"></em></a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <ul class="link-list-opt no-bdr">
-                                                                    <li><a href="#"><em
-                                                                                class="icon ni ni-edit"></em><span>Edit
-                                                                                Product</span></a></li>
-                                                                    <li><a href="#"><em
-                                                                                class="icon ni ni-eye"></em><span>View
-                                                                                Product</span></a></li>
-                                                                    <li><a href="#"><em
-                                                                                class="icon ni ni-activity-round"></em><span>Product
-                                                                                Orders</span></a></li>
-                                                                    <li><a href="#"><em
-                                                                                class="icon ni ni-trash"></em><span>Remove
-                                                                                Product</span></a></li>
-                                                                </ul>
+                                        @foreach ($products as $i => $product)
+                                            <div class="nk-tb-item">
+                                                <div class="nk-tb-col tb-col-sm">
+                                                    <span class="tb-product">
+                                                        <img src="/assets/admin/images/product/a.png" alt=""
+                                                            class="thumb">
+                                                        <span class="title text-capitalize">{{ $product['name'] }}</span>
+                                                    </span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-sub">{{ $product['sku'] }}</span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-lead">$ {{ $product['regular_price'] }}</span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-sub">{{ $product['stock'] }}</span>
+                                                </div>
+                                                <div class="nk-tb-col tb-col-md">
+                                                    <span class="tb-sub">{{ $product['category'] }}</span>
+                                                </div>
+                                                <div class="nk-tb-col nk-tb-col-tools">
+                                                    <ul class="nk-tb-actions gx-1 my-n1">
+                                                        <li class="mr-n1">
+                                                            <div class="dropdown">
+                                                                <a href="#"
+                                                                    class="dropdown-toggle btn btn-icon btn-trigger"
+                                                                    data-toggle="dropdown"><em
+                                                                        class="icon ni ni-more-h"></em></a>
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                    <ul class="link-list-opt no-bdr">
+                                                                        <li><a
+                                                                                href="{{ route('admin.products.edit', ['product' => $product->id]) }}"><em
+                                                                                    class="icon ni ni-edit"></em><span>Edit
+                                                                                    Product</span></a></li>
+                                                                        <li><a
+                                                                                href="{{ route('admin.products.show', ['product' => $product->id]) }}"><em
+                                                                                    class="icon ni ni-eye"></em><span>View
+                                                                                    Product</span></a></li>
+                                                                        <li><a href="#"><em
+                                                                                    class="icon ni ni-activity-round"></em><span>Product
+                                                                                    Orders</span></a></li>
+                                                                        <li>
+                                                                            <form
+                                                                                action="{{ route('admin.products.destroy', ['product' => $product->id]) }}"
+                                                                                method="post">
+                                                                                @csrf
+                                                                                @method('delete')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-sm bg-transparent">
+                                                                                    <em class="icon ni ni-trash"></em>
+                                                                                    <span>Remove Product</span>
+                                                                                </button>
+                                                                            </form>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div><!-- .nk-tb-item -->
+                                        @endforeach
+                                        <!-- .nk-tb-item -->
                                     </div><!-- .nk-tb-list -->
+                                    <div class="card-inner">
+                                    {{ $products->links() }}
+                                    </div>
                                 </div>
-                                <div class="card-inner">
+                                <div class="card-inner d-none">
                                     <div class="nk-block-between-md g-3">
                                         <div class="g">
                                             <ul class="pagination justify-content-center justify-content-md-start">
@@ -207,7 +221,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- .nk-block -->
+                    </div>
+                    <!-- .nk-block -->
                     <div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct"
                         data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
                         <div class="nk-block-head">
@@ -226,7 +241,8 @@
                                         <div class="form-group">
                                             <label class="form-label" for="product-title">Product Title</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" name="product-title" class="form-control" id="product-title">
+                                                <input type="text" name="name" class="form-control"
+                                                    id="product-title">
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +250,8 @@
                                         <div class="form-group">
                                             <label class="form-label" for="regular-price">Regular Price</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" name="regular-price" class="form-control" id="regular-price">
+                                                <input type="text" name="regular_price" class="form-control"
+                                                    id="regular-price">
                                             </div>
                                         </div>
                                     </div>
@@ -242,7 +259,8 @@
                                         <div class="form-group">
                                             <label class="form-label" for="sale-price">Sale Price</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" name="sale-price" class="form-control" id="sale-price">
+                                                <input type="text" name="sales_price" class="form-control"
+                                                    id="sale-price">
                                             </div>
                                         </div>
                                     </div>
@@ -250,7 +268,8 @@
                                         <div class="form-group">
                                             <label class="form-label" for="stock">Stock</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" name="stock" class="form-control" id="stock">
+                                                <input type="text" name="stock" class="form-control"
+                                                    id="stock">
                                             </div>
                                         </div>
                                     </div>
@@ -258,15 +277,22 @@
                                         <div class="form-group">
                                             <label class="form-label" for="SKU">SKU</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" name="sku" class="form-control" id="SKU">
+                                                <input type="text" name="sku" class="form-control"
+                                                    id="SKU">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="category">Category</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" name="category" class="form-control" id="category">
+                                                <label class="form-label" for="category">Category</label>
+                                                <select class="form-select" disabled name="category" multiple
+                                                    aria-label="multiple select example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="cat_1">One</option>
+                                                    <option value="cat_2">Two</option>
+                                                    <option value="cat_3">Three</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -274,7 +300,17 @@
                                         <div class="form-group">
                                             <label class="form-label" for="tags">Tags</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" name="tags" class="form-control" id="tags">
+                                                <input type="text" name="tags" class="form-control"
+                                                    id="tags">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="tags">Description</label>
+                                            <div class="form-control-wrap">
+                                                <textarea name="description" class="form-control" required cols="30" rows="10"
+                                                    placeholder="Product description"></textarea>
                                             </div>
                                         </div>
                                     </div>
