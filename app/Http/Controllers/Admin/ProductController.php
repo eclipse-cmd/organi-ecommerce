@@ -30,7 +30,7 @@ class ProductController extends Controller
             'description' => 'required',
             'sales_price' => 'required',
             'regular_price' => 'required',
-            'description' => 'required',
+//            'description' => 'required',
         ]);
 
         Product::create($validatedData);
@@ -55,9 +55,12 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $request->validate([
-            'title' => 'required',
+            'name' => 'required',
+            'stock' => 'required',
+            'sku' => 'required',
             'description' => 'required',
-            'price' => 'required',
+            'sales_price' => 'required',
+            'regular_price' => 'required',
         ]);
 
         $product->update($request->all());

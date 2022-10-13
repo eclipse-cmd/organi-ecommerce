@@ -40,7 +40,7 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
                                 <li class="nk-menu-item">
-                                    <a href="/" class="nk-menu-link">
+                                    <a href="{{ route('admin.index') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
@@ -356,8 +356,8 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-active">Administator</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-status user-status-active">ADMINISTRATOR</div>
+                                                    <div class="user-name dropdown-indicator">{{ $admin->email}}</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -368,8 +368,8 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text">{{ $admin->name }}</span>
+                                                        <span class="sub-text">{{ $admin->email }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -383,7 +383,7 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                                    <li><a href="{{ route('admin.signout') }}"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>

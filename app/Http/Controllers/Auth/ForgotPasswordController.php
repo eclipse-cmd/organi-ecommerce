@@ -47,6 +47,7 @@ class ForgotPasswordController extends Controller
             'link' => config('app.url') . '/reset-password/' . $token
         ]));
 
-        return redirect()->back(true); //FIX THIS
+//        return redirect()->back(true); //FIX THIS
+        return redirect()->back('success', 'New Password has been reset');
     }
 }

@@ -14,4 +14,11 @@ class DashboardController extends Controller
 
         return view('admin.index')->with(compact('admin'));
     }
+
+    public function signout()
+    {
+        Auth::guard('admin')->logout();
+
+        return redirect()->route('admin.login');
+    }
 }

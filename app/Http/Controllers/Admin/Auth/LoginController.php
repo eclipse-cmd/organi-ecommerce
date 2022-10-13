@@ -27,7 +27,7 @@ class LoginController extends Controller
             return back()->with("error", "Access Denied");
         }
 
-        return redirect()->intended('admin.index');
+        return redirect()->intended('admin');
     }
 
     public function logout(Request $request)
@@ -35,5 +35,6 @@ class LoginController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         return redirect()->route('admin.login');
+
     }
 }

@@ -84,76 +84,80 @@
                 </div>
             </div>
             <div class="w-50 mx-auto" >
-            <form action="{{ route('register') }}" method="post">
-                @csrf
-                <div class="mb-3">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" name="name"
-                           placeholder="Enter your full name"  value="{{ old('name') }}">
+                <form action="{{ route('register') }}" method="post">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                               placeholder="Enter your full name"  value="{{ old('name') }}">
 
-                    @error('name')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username"
-                           placeholder="Enter your username" value="{{ old('username') }}">
-
-                    @error('username')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                           placeholder="Enter your email" value="{{ old('email') }}">
-
-                    @error('email')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password"
-                           placeholder="Enter your password">
-
-                    @error('password')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Confirm your Password</label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Enter your password again">
-
-                    @error('password_confirmation')
+                        @error('name')
                         <div class="alert alert-danger">
                             {{ $message }}
                         </div>
-                    @enderror
-                </div>
+                        @enderror
 
-                <div class="col-lg-12 text-center">
-                    <button type="submit" class="btn btn-success">Register</button>
-                </div>
-            </form>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               placeholder="Enter your username" value="{{ old('username') }}">
+
+                        @error('username')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="Enter your email" value="{{ old('email') }}">
+
+                        @error('email')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Enter your password">
+
+                        @error('password')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password_confirmation" class="form-label">Confirm your Password</label>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
+                               placeholder="Enter your password again">
+
+                        @error('password_confirmation')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-lg-12 text-center">
+                        <button type="submit" class="btn btn-success">Register</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <!-- Contact Form End -->
 @endSection()
 
+
 @section('script')
+
 @endSection()
