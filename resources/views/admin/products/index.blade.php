@@ -242,7 +242,7 @@
                                             <label class="form-label" for="product-title">Product Title</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" name="name" class="form-control"
-                                                    id="product-title">
+                                                    id="product-title" value="{{ old('name') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -251,7 +251,7 @@
                                             <label class="form-label" for="regular-price">Regular Price</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" name="regular_price" class="form-control"
-                                                    id="regular-price">
+                                                    id="regular-price" value="{{ old('regular_price') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -260,7 +260,7 @@
                                             <label class="form-label" for="sale-price">Sale Price</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" name="sales_price" class="form-control"
-                                                    id="sale-price">
+                                                    id="sale-price" value="{{ old('sales_price') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@
                                             <label class="form-label" for="stock">Stock</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" name="stock" class="form-control"
-                                                    id="stock">
+                                                    id="stock" value="{{ old('stock') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +278,7 @@
                                             <label class="form-label" for="SKU">SKU</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" name="sku" class="form-control"
-                                                    id="SKU">
+                                                    id="SKU" value="{{ old('sku') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -301,7 +301,7 @@
                                             <label class="form-label" for="tags">Tags</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" name="tags" class="form-control"
-                                                    id="tags">
+                                                    id="tags" value="{{ old('tag') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -310,7 +310,7 @@
                                             <label class="form-label" for="tags">Description</label>
                                             <div class="form-control-wrap">
                                                 <textarea name="description" class="form-control" required cols="30" rows="10"
-                                                    placeholder="Product description"></textarea>
+                                                    placeholder="Product description">{{ old('description') }}</textarea>
                                             </div>
                                         </div>
                                     </div>

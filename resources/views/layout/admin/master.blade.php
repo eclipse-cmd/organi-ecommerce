@@ -357,7 +357,7 @@
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
                                                     <div class="user-status user-status-active">ADMINISTRATOR</div>
-                                                    <div class="user-name dropdown-indicator">{{ $admin->email}}</div>
+                                                    <div class="user-name dropdown-indicator">{{ Auth::user()->email}}</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -368,8 +368,8 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">{{ $admin->name }}</span>
-                                                        <span class="sub-text">{{ $admin->email }}</span>
+                                                        <span class="lead-text">{{ Auth::user()->name }}</span>
+                                                        <span class="sub-text">{{ Auth::user()->email }}</span>
                                                     </div>
                                                 </div>
                                             </div>

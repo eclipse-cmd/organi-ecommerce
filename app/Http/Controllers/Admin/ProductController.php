@@ -25,7 +25,7 @@ class ProductController extends Controller
         $validatedData =  $request->validate([
             'name' => 'required',
             'stock' => 'required',
-            'sku' => 'required',
+            'sku' => 'required|unique:products',
             // 'category' => 'required',
             'description' => 'required',
             'sales_price' => 'required',
