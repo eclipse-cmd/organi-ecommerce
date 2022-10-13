@@ -66,7 +66,7 @@
                     <input type="text" name="sku" class="form-control" placeholder="SKU" value="{{ $product->sku }}">
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
