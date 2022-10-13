@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('stock');
             $table->string('sku')->unique();
             $table->json('category')->nullable();
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->integer('regular_price');
             $table->integer('sales_price');
             $table->timestamps();

@@ -26,14 +26,13 @@ class ProductController extends Controller
             'name' => 'required',
             'stock' => 'required',
             'sku' => 'required|unique:products',
-            // 'category' => 'required',
-            'description' => 'required',
+            'category' => 'nullable',
             'sales_price' => 'required',
             'regular_price' => 'required',
-//            'description' => 'required',
+            'description' => 'nullable',
         ]);
 
-        Product::create($validatedData);
+        Product::create(array_merge($validatedData, ['category' => json_encode(["test-1", 'test-2'])]));
 
         return redirect()->back()->with('success', 'Product created successfully.');
     }
