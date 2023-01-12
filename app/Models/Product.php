@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -15,6 +16,7 @@ class Product extends Model
         'stock',
         'sku',
         'description',
+        'image_path',
         'category',
         'sales_price',
         'regular_price',
@@ -24,4 +26,13 @@ class Product extends Model
     protected $cast = [
         'category' => 'array',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    // protected $guarded = [
+
+    // ];
 }

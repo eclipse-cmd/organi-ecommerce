@@ -27,10 +27,13 @@ class ProductController extends Controller
             'stock' => 'required',
             'sku' => 'required|unique:products',
             'category' => 'nullable',
+            'images' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
             'sales_price' => 'required',
             'regular_price' => 'required',
             'description' => 'nullable',
         ]);
+
+
 
         Product::create(array_merge($validatedData, ['category' => json_encode(["test-1", 'test-2'])]));
 
@@ -75,5 +78,14 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products.index')
             ->with('success', 'Product deleted successfully');
+    }
+
+    private function storeImage($request)
+    {
+        $newImageName = uniqid(). '-'. $request->name . '.' . $request->image->extension();
+        
+        $request->image->move(public_path('images'), $newImageName);
+
+        return response()->json(['success'=>$newImageName]);
     }
 }
